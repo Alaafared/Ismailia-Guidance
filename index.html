@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1e293b" />
+  <title>إدارة توجيه تخصص الكهرباء - محافظة الإسماعيلية</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <!-- شاشة تسجيل الدخول -->
+  <div id="login-screen" class="screen active">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>إدارة توجيه تخصص الكهرباء</h1>
+        <p>محافظة الإسماعيلية</p>
+      </div>
+      <form id="login-form">
+        <div class="form-group">
+          <label>البريد الإلكتروني</label>
+          <input type="email" id="login-email" required placeholder="E-mail" value="" />
+        </div>
+        <div class="form-group">
+          <label>كلمة المرور</label>
+          <input type="password" id="login-password" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="login-btn">تسجيل الدخول</button>
+        <p id="login-error" class="error-msg" style="white-space:pre-wrap;text-align:right"></p>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- الشاشة الرئيسية -->
+  <div id="app-screen" class="screen">
+    <div id="sidebar-overlay" class="sidebar-overlay" aria-hidden="true"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>توجيه الكهرباء</h2>
+        <p id="user-role-label"></p>
+      </div>
+      <nav class="sidebar-nav" id="sidebar-nav">
+        <!-- يتم ملؤها ديناميكياً حسب الدور -->
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <span id="user-name-display"></span>
+          <small id="user-school-display"></small>
+        </div>
+        <button id="logout-btn" class="btn btn-outline btn-sm">تسجيل الخروج</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button id="menu-toggle" class="menu-btn" type="button" aria-label="فتح القائمة">☰</button>
+        <h1 id="page-title">لوحة التحكم</h1>
+        <div class="topbar-actions">
+          <button id="print-btn" class="btn btn-sm btn-outline" style="display:none">طباعة</button>
+          <button id="export-btn" class="btn btn-sm btn-outline" style="display:none">تصدير Excel</button>
+        </div>
+      </header>
+
+      <div class="content-area" id="content-area">
+        <!-- المحتوى الديناميكي -->
+      </div>
+    </main>
+  </div>
+
+  <!-- النوافذ المنبثقة (Modals) -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h3 id="modal-title"></h3>
+        <button class="modal-close" id="modal-close">×</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer" id="modal-footer"></div>
+    </div>
+  </div>
+
+  <!-- قالب الطباعة -->
+  <div id="print-area" class="print-area"></div>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/constants.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/permissions.js"></script>
+  <script src="js/pages/users.js"></script>
+  <script src="js/pages/schools.js"></script>
+  <script src="js/pages/budget.js"></script>
+  <script src="js/pages/status.js"></script>
+  <script src="js/pages/shortage.js"></script>
+  <script src="js/pages/curriculum.js"></script>
+  <script src="js/pages/books.js"></script>
+  <script src="js/pages/visits.js"></script>
+  <script src="js/pages/movements.js"></script>
+  <script src="js/pages/meetings.js"></script>
+  <script src="js/pages/decisions.js"></script>
+  <script src="js/pages/schedules.js"></script>
+  <script src="js/pages/websites.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
