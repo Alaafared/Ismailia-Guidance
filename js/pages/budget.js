@@ -32,8 +32,6 @@ async function renderBudgetPage() {
               <th>عدد الفصول</th>
               <th>عدد الطلبة</th>
               <th>عدد الحصص</th>
-              // <th>عدد المدرسين</th>
-              // <th>نصاب المدرسين</th>
               <th>إجراءات</th>
             </tr>
           </thead>
@@ -90,8 +88,6 @@ async function loadBudgetData() {
       <td>${b.classrooms ?? '—'}</td>
       <td>${b.students ?? '—'}</td>
       <td>${b.periods ?? '—'}</td>
-      <td>${b.teachers ?? '—'}</td>
-      <td>${b.teachingLoad ?? '—'}</td>
       <td class="actions-cell">
         ${canEdit ? `<button class="btn btn-sm btn-outline btn-edit-budget" data-id="${doc.id}">تعديل</button>` : ''}
         ${canDel ? `<button class="btn btn-sm btn-danger btn-del-budget" data-id="${doc.id}">حذف</button>` : ''}
@@ -125,8 +121,6 @@ async function loadBudgetData() {
           <tr><th>عدد الفصول</th><td>${b.classrooms}</td></tr>
           <tr><th>عدد الطلبة</th><td>${b.students}</td></tr>
           <tr><th>عدد الحصص</th><td>${b.periods}</td></tr>
-          // <tr><th>عدد المدرسين</th><td>${b.teachers}</td></tr>
-          // <tr><th>نصاب المدرسين</th><td>${b.teachingLoad}</td></tr>
         </table>
       `);
     };
@@ -136,7 +130,7 @@ async function loadBudgetData() {
 async function openBudgetModal(id = null) {
   let data = {
     specialization: '', grade: '', classrooms: '', students: '',
-    periods: '', teachers: '', teachingLoad: '', school: currentUser.school || ''
+    periods: '', school: currentUser.school || ''
   };
   if (id) {
     const doc = await db.collection('budget').doc(id).get();
@@ -175,14 +169,6 @@ async function openBudgetModal(id = null) {
         <label>عدد الحصص</label>
         <input type="number" id="b-periods" value="${data.periods ?? ''}" min="0" />
       </div>
-      // <div class="form-group">
-      //   <label>عدد المدرسين</label>
-      //   <input type="number" id="b-teachers" value="${data.teachers ?? ''}" min="0" />
-      // </div>
-      // <div class="form-group">
-      //   <label>نصاب المدرسين</label>
-      //   <input type="text" id="b-teachingLoad" value="${data.teachingLoad || ''}" />
-      // </div>
 
     </div>
   `;
@@ -196,8 +182,6 @@ async function openBudgetModal(id = null) {
       classrooms: Number(document.getElementById('b-classrooms').value) || 0,
       students: Number(document.getElementById('b-students').value) || 0,
       periods: Number(document.getElementById('b-periods').value) || 0,
-      teachers: Number(document.getElementById('b-teachers').value) || 0,
-      teachingLoad: document.getElementById('b-teachingLoad').value.trim(),
       school: isSupervisor ? currentUser.school : document.getElementById('b-school').value,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
       updatedBy: currentUser.name
