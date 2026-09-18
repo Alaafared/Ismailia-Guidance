@@ -1,7 +1,7 @@
 const PAGES = {
   users: { title: 'إدارة المستخدمين', render: renderUsersPage, icon: '👥' },
   schools: { title: 'بيانات المدارس', render: renderSchoolsPage, icon: '🏫' },
-  budget: { title: 'ميزانية العجز والزيادة', render: renderBudgetPage, icon: '📊' },
+  budget: { title: 'ميزانية الحصص والفصول', render: renderBudgetPage, icon: '📊' },
   status: { title: 'صحف أحوال المعلمين', render: renderStatusPage, icon: '📋' },
   shortage: { title: 'العجز والزيادة', render: renderShortagePage, icon: '📈' },
   schedules: { title: 'جداول المعلمين', render: renderSchedulesPage, icon: '🗓️' },
