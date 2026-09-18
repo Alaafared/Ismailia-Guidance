@@ -32,8 +32,8 @@ async function renderBudgetPage() {
               <th>عدد الفصول</th>
               <th>عدد الطلبة</th>
               <th>عدد الحصص</th>
-              <th>عدد المدرسين</th>
-              <th>نصاب المدرسين</th>
+              // <th>عدد المدرسين</th>
+              // <th>نصاب المدرسين</th>
               <th>إجراءات</th>
             </tr>
           </thead>
@@ -125,8 +125,8 @@ async function loadBudgetData() {
           <tr><th>عدد الفصول</th><td>${b.classrooms}</td></tr>
           <tr><th>عدد الطلبة</th><td>${b.students}</td></tr>
           <tr><th>عدد الحصص</th><td>${b.periods}</td></tr>
-          <tr><th>عدد المدرسين</th><td>${b.teachers}</td></tr>
-          <tr><th>نصاب المدرسين</th><td>${b.teachingLoad}</td></tr>
+          // <tr><th>عدد المدرسين</th><td>${b.teachers}</td></tr>
+          // <tr><th>نصاب المدرسين</th><td>${b.teachingLoad}</td></tr>
         </table>
       `);
     };
@@ -175,14 +175,14 @@ async function openBudgetModal(id = null) {
         <label>عدد الحصص</label>
         <input type="number" id="b-periods" value="${data.periods ?? ''}" min="0" />
       </div>
-      <div class="form-group">
-        <label>عدد المدرسين</label>
-        <input type="number" id="b-teachers" value="${data.teachers ?? ''}" min="0" />
-      </div>
-      <div class="form-group">
-        <label>نصاب المدرسين</label>
-        <input type="text" id="b-teachingLoad" value="${data.teachingLoad || ''}" />
-      </div>
+      // <div class="form-group">
+      //   <label>عدد المدرسين</label>
+      //   <input type="number" id="b-teachers" value="${data.teachers ?? ''}" min="0" />
+      // </div>
+      // <div class="form-group">
+      //   <label>نصاب المدرسين</label>
+      //   <input type="text" id="b-teachingLoad" value="${data.teachingLoad || ''}" />
+      // </div>
 
     </div>
   `;
